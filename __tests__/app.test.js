@@ -50,7 +50,7 @@ describe("GET /employees/random", () => {
     try {
       const employee1 = await request(app).get("/employees/random");
       let employee2 = await request(app).get("/employees/random");
-      while (employee1.body.id === employee2.body.id) { // added a condition to re-get random id if employee1 is equal to employee2
+      while (employee1.body.id === employee2.body.id) { // added a condition to re-get random id if employee1 is equal to employee2 to reduce flakiness
         return employee2 = await request(app).get("/employees/random");
       }
       expect(employee1.body).not.toEqual(employee2.body);
