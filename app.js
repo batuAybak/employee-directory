@@ -11,6 +11,7 @@ app.get('/employees', (req, res) => {
     res.send(employees)
 })
 
+//Random middleware has to come first
 app.get('/employees/random', (req, res) => {
     const randomIndex = Math.floor(Math.random() * employees.length)
     res.send(employees[randomIndex])
