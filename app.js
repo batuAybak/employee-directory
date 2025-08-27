@@ -18,6 +18,8 @@ app.get('/employees/random', (req, res) => {
 
 app.get('/employees/:id', (req, res) => {
     const { id } = req.params
+    // req.params are always strings, so we need to convert `id` into a number
+    // before we can use it to find the employee
     employees[id] === undefined ? res.status(404).send('There is no employee with that id') : res.send(employees.find(emp => emp.id == id)) //or === +id
 })
 
